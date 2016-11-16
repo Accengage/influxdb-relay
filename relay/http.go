@@ -58,6 +58,7 @@ func NewHTTP(cfg HTTPConfig) (Relay, error) {
 		h.pingResponseCode = cfg.DefaultPingResponse
 	}
 
+	h.pingResponseHeaders = make(map[string]string)
 	h.pingResponseHeaders["X-InfluxDB-Version"] = "relay"
 	if (h.pingResponseCode != http.StatusNoContent) {
 		h.pingResponseHeaders["Content-Length"] = "0"
